@@ -1,28 +1,27 @@
-# JDM BuildLab
+# 🏎️ JDM BuildLab API
 
-API тюнінг-конфігуратора японських авто — наскрізний проєкт FastAPI плану.
+REST API тюнінг-конфігуратора японських автомобілів — каталог авто, каталог тюнінг-запчастин, перевірка сумісності деталей з двигуном.
 
 ## Стек
-- FastAPI, PostgreSQL, SQLAlchemy 2.0 (async), Alembic, Pydantic v2, JWT, pytest, Docker
 
-## Структура
-```
-app/
-├── core/          # конфіг, безпека
-├── models/        # SQLAlchemy моделі
-├── schemas/       # Pydantic схеми
-├── routers/       # FastAPI роутери
-├── services/      # бізнес-логіка
-└── repositories/  # запити до БД
-```
+- FastAPI — async REST API
+- PostgreSQL — база даних (Docker)
+- SQLAlchemy 2.0 — async ORM
+- Alembic — міграції бази даних
+- Pydantic v2 — валідація даних
+- uv — менеджер пакетів
 
-## Старт (Фаза 6+)
-```bash
-uvicorn app.main:app --reload
-```
+## Функціонал
 
-## MVP ендпоінти
-- GET  /cars — каталог авто
-- GET  /parts — каталог запчастин
-- POST /builds — створити білд
-- GET  /builds/{id}/compatibility — перевірити сумісність
+- CRUD для каталогу авто
+- CRUD для каталогу деталей
+- Перевірка сумісності деталей з конкретним авто за кодом двигуна
+- Автоматична документація API
+
+## Запуск
+
+Підняти PostgreSQL через Docker, встановити залежності через uv, застосувати міграції через alembic upgrade head, запустити сервер через fastapi dev main.py.
+
+## Статус
+
+Проєкт у активній розробці.
